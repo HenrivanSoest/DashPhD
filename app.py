@@ -11,8 +11,6 @@ server = app.server
 
 got_df = pd.read_csv(r'C:\Users\Henri van Soest\Documents\PhD\Writing\Year 3 Writeup\4 Framework\Framework_Timeline2.csv')
 
-print(got_df)
-
 top_markdown_text = '''
 This is my first deployed app
 '''
@@ -20,6 +18,12 @@ This is my first deployed app
 app.layout = html.Div([
 
     dcc.Markdown(children=top_markdown_text),
+    dcc.dash_table.DataTable(
+        id='table',
+        columns=[{"name": i, "id": i} for i in got_df.columns],
+        data=df.to_dict('records'),
+)
+
 
 ])
 
