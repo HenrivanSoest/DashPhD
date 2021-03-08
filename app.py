@@ -23,8 +23,8 @@ LETTER="A"
 ##############################################################################################################################################################
 def network_graph(yearRange, AccountToSearch):
 
-    edge1 = pd.read_csv(r'C:\Users\Henri van Soest\Documents\PhD\Writing\Year 3 Writeup\4 Framework\Framework_Edge1.csv')
-    node1 = pd.read_csv(r'C:\Users\Henri van Soest\Documents\PhD\Writing\Year 3 Writeup\4 Framework\Framework_Node1.csv')
+    edge1 = pd.read_csv(r'C:\Users\Henri van Soest\Documents\PhD\Writing\Visualisation\Framework_Edge1.csv')
+    node1 = pd.read_csv(r'C:\Users\Henri van Soest\Documents\PhD\Writing\Visualisation\Framework_Node1.csv')
 
     # filter the record by datetime, to enable interactive control through the input box
     edge1['Datetime'] = "" # add empty Datetime column to edge1 dataframe
