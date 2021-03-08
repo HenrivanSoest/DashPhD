@@ -9,7 +9,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
-got_df = pd.read_csv(r'C:\Users\Henri van Soest\Documents\PhD\Writing\Year 3 Writeup\4 Framework\Framework_Timeline2.csv')
+got_df = pd.read_csv('https://github.com/HenrivanSoest/DashPhD/blob/GunicornTest/Framework_Node1.csv')
 
 top_markdown_text = '''
 This is my first deployed app
