@@ -15,17 +15,11 @@ top_markdown_text = '''
 This is my first deployed app
 '''
 
-app.layout = html.Div([
-
-    dcc.Markdown(children=top_markdown_text),
-    dcc.dash_table.DataTable(
-        id='table',
-        columns=[{"name": i, "id": i} for i in got_df.columns],
-        data=df.to_dict('records'),
+app.layout = dash_table.DataTable(
+    id='table',
+    columns=[{"name": i, "id": i} for i in df.columns],
+    data=df.to_dict('records'),
 )
-
-
-])
 
 if __name__ == '__main__':
     app.run_server(debug=True)
