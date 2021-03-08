@@ -16,6 +16,7 @@ import json
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.title = "Transaction Network"
+server = app.server
 
 YEAR=[2010, 2021]
 LETTER="A"
