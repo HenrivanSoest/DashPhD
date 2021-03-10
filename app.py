@@ -1,32 +1,14 @@
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+import networkx
 import pandas as pd
+pd.set_option('max_rows', 400)
+import matplotlib.pyplot as plt
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+got_df = pd.read_csv(r'C:\Users\Henri van Soest\Documents\PhD\Writing\Year 3 Writeup\4 Framework\Framework_Timeline2.csv')
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+G = networkx.from_pandas_edgelist(got_df, 'Source', 'Target', 'Area', 'Year_of_proposal', 'Year_of_entry_into_force', 'Year_of_exit', 'Url')
 
-server = app.server
+networkx.write_graphml(G, 'GOT-network.graphml')
 
-app.layout = html.Div([
-    html.H6("Change the value in the text box to see callbacks in action!"),
-    html.Div(["Input: ",
-              dcc.Input(id='my-input', value='initial value', type='text')]),
-    html.Br(),
-    html.Div('my-output'),
-
-])
-
-
-@app.callback(
-    [Output('my-output', 'children'),
-    Input('my-input', 'value')]
-)
-def update_output_div(input_value):
-    return 'Output: {}'.format(input_value)
-
-if __name__ == '__main__':
-    app.run_server(debug=False, dev_tools_ui=False, dev_tools_props_check=False)
-
+plt.figure(figsize=(8,8))
+networkx.draw(G, with_labels=True, node_color='skyblue', width=.3, font_size=8)
+plt.show()
