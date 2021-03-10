@@ -9,17 +9,22 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
-df = pd.read_csv('https://github.com/HenrivanSoest/DashPhD/blob/GunicornTest/Framework_Node1.csv')
+app.layout = html.Div([
+    html.H6("Change the value in the text box to see callbacks in action!"),
+    html.Div(["Input: ",
+              dcc.Input(id='my-input', value='initial value', type='text')]),
+    html.Br(),
+    html.Div(id='my-output'),
 
-top_markdown_text = '''
-This is my first deployed app
-'''
+])
 
-app.layout = dash_table.DataTable(
-    id='table',
-    columns=[{"name": i, "id": i} for i in df.columns],
-    data=df.to_dict('records'),
+
+@app.callback(
+    Output(component_id='my-output', component_property='children'),
+    Input(component_id='my-input', component_property='value')
 )
+def update_output_div(input_value):
+    return 'Output: {}'.format(input_value)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
