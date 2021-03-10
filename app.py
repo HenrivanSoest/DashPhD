@@ -15,14 +15,14 @@ app.layout = html.Div([
     html.Div(["Input: ",
               dcc.Input(id='my-input', value='initial value', type='text')]),
     html.Br(),
-    html.Div(id='my-output', children='Hello world'),
+    html.Div('my-output'),
 
 ])
 
 
 @app.callback(
-    [Output(component_id='my-output', component_property='children'),
-    Input(component_id='my-input', component_property='value')]
+    [Output('my-output', 'children'),
+    Input('my-input', 'value')]
 )
 def update_output_div(input_value):
     return 'Output: {}'.format(input_value)
