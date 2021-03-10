@@ -23,7 +23,7 @@ MarkupSafe==1.1.1
 nbformat==4.4.0
 networkx==2.5
 numpy==1.16.4
-pandas==1.2.3
+pandas==0.2.24
 plotly==4.1.0
 pytz==2019.1
 six==1.12.0
