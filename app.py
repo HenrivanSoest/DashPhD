@@ -15,7 +15,7 @@ app.layout = html.Div([
     html.Div(["Input: ",
               dcc.Input(id='my-input', value='initial value', type='text')]),
     html.Br(),
-    html.Div(id='my-output', property='children'),
+    html.Div(id='my-output', children),
 
 ])
 
